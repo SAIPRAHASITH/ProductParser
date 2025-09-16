@@ -203,7 +203,7 @@ function exportToExcel() {
     
     // Create CSV content
     let csvContent = `Scenario: ${scenarioName}\n\n`;
-    csvContent += 'Source,Item #,Category,SKU,Quantity,Revenue,Events,Merchandising,Validation Status\n';
+    csvContent += 'Category,SKU,Quantity,Revenue,Events,Merchandising,Validation Status\n';
 
     parsedData.forEach((product, index) => {
         const row = document.querySelector(`#productTable tbody tr:nth-child(${index + 1})`);
@@ -213,7 +213,7 @@ function exportToExcel() {
             validationStatus = 'ERROR';
         }
 
-        csvContent += `"Entry ${product.sourceIndex}","${product.originalIndex}","${product.category}","${product.sku}","${product.quantity}","${product.revenue}","${product.events}","${product.merchandising}","${validationStatus}"\n`;
+        csvContent += `"${product.category}","${product.sku}","${product.quantity}","${product.revenue}","${product.events}","${product.merchandising}","${validationStatus}"\n`;
     });
 
     // Create and download file
